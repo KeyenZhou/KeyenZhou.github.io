@@ -409,7 +409,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.1k
                 </div>
                 
 
@@ -500,7 +500,7 @@
 <li>[1] <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">hexo官方文档</a></li>
 </ul>
 <h2 id="配置matery主题"><a href="#配置matery主题" class="headerlink" title="配置matery主题"></a>配置matery主题</h2><h3 id="仓库位置"><a href="#仓库位置" class="headerlink" title="仓库位置"></a>仓库位置</h3><p><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">hexo-theme-matery</a></p>
-<p>将此仓库clone到你站点的theme/文件夹下</p>
+<p>将此仓库clone到你站点的themes/文件夹下</p>
 <p>按照blinkfox大神的说明配置即可</p>
 <h2 id="图片无法显示"><a href="#图片无法显示" class="headerlink" title="图片无法显示"></a>图片无法显示</h2><p>修改</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">post_asset_folder: <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -556,6 +556,16 @@ marked:
 <p>（2）设置为false <code>git config --global core.autocrlf false</code></p>
 <p>  　当设置成false时，line endings将不做转换操作。文本文件保持原来的样子。</p>
 <p>（3）设置为input时，添加文件git仓库时，git把crlf编程lf。当有人Check代码时还是lf方式。因此在window操作系统下，不要使用这个设置。</p>
+<h2 id="部署评论模块"><a href="#部署评论模块" class="headerlink" title="部署评论模块"></a>部署评论模块</h2><h3 id="livere"><a href="#livere" class="headerlink" title="livere"></a>livere</h3><p>我们可以看到/themes/hexo-theme-matery/_config.yml</p>
+<p>有如下配置信息</p>
+<img src="/2023/12/10/hexo-matery/livere-config" class="" title="livere配置">
+
+<p>在来必力网站注册:</p>
+<p><a target="_blank" rel="noopener" href="https://www.livere.com/">来必力</a></p>
+<p>注册好账号之后打开：后台管理——&gt;代码管理 复制 data-uid的值，如下图</p>
+<img src="/2023/12/10/hexo-matery/Laibili-management-interface" class="" title="来必力管理界面">
+
+<p>将data-uid的值填入_config.yml配置文件里面的uid即可。</p>
 
                 
             </div>
@@ -1025,7 +1035,7 @@ marked:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">1.2k</span>
             
             
             
