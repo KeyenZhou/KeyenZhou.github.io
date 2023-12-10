@@ -419,7 +419,7 @@ Git
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1k
                 </div>
                 
 
@@ -522,16 +522,11 @@ Git
 <span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-marked <span class="token parameter variable">--save</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>启用:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/**
- * PipedInputStream 和 PipedOutputStream 的测试类.
- *
- * @author blinkfox on <span class="token number">2017</span>/10/19.
- */
-_config.yml
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># _config.yml</span>
 post_asset_folder: <span class="token boolean">true</span>
 marked:
   prependRoot: <span class="token boolean">true</span>
-  postAsset: <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  postAsset: <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>启用后，资源图片将会被自动解析为其对应文章的路径。</p>
 <p>需要注意的是:图片名最好是英文名称,如果你自己重命名了图片为中文名称的话，将出现不可预知的错误。</p>
