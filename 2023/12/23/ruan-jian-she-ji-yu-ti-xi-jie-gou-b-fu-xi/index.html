@@ -405,14 +405,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.6k
+                    12.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    41 分
+                    48 分
                 </div>
                 
 
@@ -742,6 +742,710 @@
 <li>Modifiability: The architecture must support a phased migration from the current Forth Generation Language (4GL) version to a .NET systems technology solution.<br> 可修改性:体系结构必须支持从当前的第四代语言(4GL)版本到. net系统技术解决方案的阶段性迁移。</li>
 </ul>
 <h3 id="掌握："><a href="#掌握：" class="headerlink" title="掌握："></a>掌握：</h3><p>命令模式，状态模式，装饰模式，观察者模式，策略模式，单例模式，工厂方法模式，组合模式，适配器模式，外观模式，责任链模式的UML图和java代码</p>
+<h4 id="命令模式-Command-Pattern"><a href="#命令模式-Command-Pattern" class="headerlink" title="命令模式(Command Pattern):"></a>命令模式(Command Pattern):</h4><h5 id="UML"><a href="#UML" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Command <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +execute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteCommand implements Command <span class="token punctuation">{</span>
+    +execute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Invoker <span class="token punctuation">{</span>
+    -command<span class="token punctuation">:</span> Command
+    +setCommand<span class="token punctuation">(</span>command<span class="token punctuation">:</span> Command<span class="token punctuation">)</span>
+    +executeCommand<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Receiver <span class="token punctuation">{</span>
+    +action<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+ConcreteCommand <span class="token arrow operator">--&gt;</span> Receiver
+Invoker <span class="token arrow operator">--&gt;</span> Command
+ConcreteCommand <span class="token arrow operator">--&gt;</span> Invoker
+<span class="token delimiter punctuation">@enduml</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/command-mode.png" class="" title="命令模式">
+
+
+
+<h5 id="java代码"><a href="#java代码" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Implement Command interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Command</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Command</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteCommand</span> <span class="token keyword">implements</span> <span class="token class-name">Command</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Receiver</span> receiver<span class="token punctuation">;</span>
+    
+    <span class="token class-name">ConcreteCommand</span><span class="token punctuation">(</span><span class="token class-name">Receiver</span> receiver<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>receiver <span class="token operator">=</span> receiver<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        receiver<span class="token punctuation">.</span><span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Invoker</span>
+<span class="token keyword">class</span> <span class="token class-name">Invoker</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Command</span> command<span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCommand</span><span class="token punctuation">(</span><span class="token class-name">Command</span> command<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>command <span class="token operator">=</span> command<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">executeCommand</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        command<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Receiver</span>
+<span class="token keyword">class</span> <span class="token class-name">Receiver</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Perform action</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="状态模式-State-Pattern"><a href="#状态模式-State-Pattern" class="headerlink" title="状态模式(State Pattern):"></a>状态模式(State Pattern):</h4><h5 id="UML-1"><a href="#UML-1" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> State <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +handle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteStateA implements State <span class="token punctuation">{</span>
+    +handle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteStateB implements State <span class="token punctuation">{</span>
+    +handle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Context <span class="token punctuation">{</span>
+    -state<span class="token punctuation">:</span> State
+    +request<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+ConcreteStateA <span class="token arrow operator">--&gt;</span> State
+ConcreteStateB <span class="token arrow operator">--&gt;</span> State
+ConcreteStateA <span class="token arrow operator">--&gt;</span> Context
+ConcreteStateB <span class="token arrow operator">--&gt;</span> Context
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/state-pattern.png" class="" title="状态模式">
+
+<h5 id="java代码-1"><a href="#java代码-1" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// State interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">handle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete States</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteStateA</span> <span class="token keyword">implements</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Handle state A</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteStateB</span> <span class="token keyword">implements</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Handle state B</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Context</span>
+<span class="token keyword">class</span> <span class="token class-name">Context</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">State</span> state<span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        state<span class="token punctuation">.</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="装饰模式-Decorator-Pattern"><a href="#装饰模式-Decorator-Pattern" class="headerlink" title="装饰模式(Decorator Pattern):"></a>装饰模式(Decorator Pattern):</h4><h5 id="UML-2"><a href="#UML-2" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Component <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteComponent implements Component <span class="token punctuation">{</span>
+    +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Decorator implements Component <span class="token punctuation">{</span>
+    -component<span class="token punctuation">:</span> Component
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteDecoratorA implements Decorator <span class="token punctuation">{</span>
+    +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteDecoratorB implements Decorator <span class="token punctuation">{</span>
+    +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+ConcreteDecoratorA <span class="token arrow operator">--&gt;</span> Decorator
+ConcreteDecoratorB <span class="token arrow operator">--&gt;</span> Decorator
+Decorator <span class="token arrow operator">--&gt;</span> Component
+ConcreteDecoratorA <span class="token arrow operator">--&gt;</span> ConcreteComponent
+ConcreteDecoratorB <span class="token arrow operator">--&gt;</span> ConcreteComponent
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/decorator-pattern.png" class="" title="装饰模式">
+
+<h5 id="java代码-2"><a href="#java代码-2" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Component interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Component</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteComponent</span> <span class="token keyword">implements</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Perform operation</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Decorator interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Decorator</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Additional methods if needed</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Decorators</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteDecoratorA</span> <span class="token keyword">implements</span> <span class="token class-name">Decorator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Component</span> component<span class="token punctuation">;</span>
+    
+    <span class="token class-name">ConcreteDecoratorA</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>component <span class="token operator">=</span> component<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Additional operation</span>
+        component<span class="token punctuation">.</span><span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteDecoratorB</span> <span class="token keyword">implements</span> <span class="token class-name">Decorator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Component</span> component<span class="token punctuation">;</span>
+    
+    <span class="token class-name">ConcreteDecoratorB</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>component <span class="token operator">=</span> component<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Additional operation</span>
+        component<span class="token punctuation">.</span><span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="观察者模式-Observer-Pattern"><a href="#观察者模式-Observer-Pattern" class="headerlink" title="观察者模式(Observer Pattern):"></a>观察者模式(Observer Pattern):</h4><h5 id="UML-3"><a href="#UML-3" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Observer <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +update<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteObserverA implements Observer <span class="token punctuation">{</span>
+    +update<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteObserverB implements Observer <span class="token punctuation">{</span>
+    +update<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Subject <span class="token punctuation">{</span>
+    <span class="token arrow operator">-o</span>bservers<span class="token punctuation">:</span> List&lt;Observer&gt;
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +attach<span class="token punctuation">(</span>observer<span class="token punctuation">:</span> Observer<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +detach<span class="token punctuation">(</span>observer<span class="token punctuation">:</span> Observer<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +notifyObservers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteSubject implements Subject <span class="token punctuation">{</span>
+    +attach<span class="token punctuation">(</span>observer<span class="token punctuation">:</span> Observer<span class="token punctuation">)</span>
+    +detach<span class="token punctuation">(</span>observer<span class="token punctuation">:</span> Observer<span class="token punctuation">)</span>
+    +notifyObservers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+ConcreteObserverA <span class="token arrow operator">--&gt;</span> Observer
+ConcreteObserverB <span class="token arrow operator">--&gt;</span> Observer
+ConcreteObserverA <span class="token arrow operator">--&gt;</span> ConcreteSubject
+ConcreteObserverB <span class="token arrow operator">--&gt;</span> ConcreteSubject
+ConcreteSubject <span class="token arrow operator">--&gt;</span> Observer
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/observer-pattern.png" class="" title="观察者模式">
+
+<h5 id="java代码-3"><a href="#java代码-3" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">// Observer interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Observer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Observers</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteObserverA</span> <span class="token keyword">implements</span> <span class="token class-name">Observer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Update logic for Observer A</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteObserverB</span> <span class="token keyword">implements</span> <span class="token class-name">Observer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Update logic for Observer B</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Subject interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">attach</span><span class="token punctuation">(</span><span class="token class-name">Observer</span> observer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">detach</span><span class="token punctuation">(</span><span class="token class-name">Observer</span> observer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">notifyObservers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Subject</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteSubject</span> <span class="token keyword">implements</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Observer</span><span class="token punctuation">&gt;</span></span> observers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">attach</span><span class="token punctuation">(</span><span class="token class-name">Observer</span> observer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        observers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>observer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">detach</span><span class="token punctuation">(</span><span class="token class-name">Observer</span> observer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        observers<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>observer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">notifyObservers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Observer</span> observer <span class="token operator">:</span> observers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            observer<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="策略模式-Strategy-Pattern"><a href="#策略模式-Strategy-Pattern" class="headerlink" title="策略模式(Strategy Pattern):"></a>策略模式(Strategy Pattern):</h4><h5 id="UML-4"><a href="#UML-4" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Strategy <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +algorithm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteStrategyA implements Strategy <span class="token punctuation">{</span>
+    +algorithm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteStrategyB implements Strategy <span class="token punctuation">{</span>
+    +algorithm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Context <span class="token punctuation">{</span>
+    -strategy<span class="token punctuation">:</span> Strategy
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +setStrategy<span class="token punctuation">(</span>strategy<span class="token punctuation">:</span> Strategy<span class="token punctuation">)</span>
+    +execute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+ConcreteStrategyA <span class="token arrow operator">--&gt;</span> Strategy
+ConcreteStrategyB <span class="token arrow operator">--&gt;</span> Strategy
+ConcreteStrategyA <span class="token arrow operator">--&gt;</span> Context
+ConcreteStrategyB <span class="token arrow operator">--&gt;</span> Context
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/strategy-pattern.png" class="" title="策略模式">
+
+<h5 id="java代码-4"><a href="#java代码-4" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Strategy interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Strategy</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">algorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Strategies</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteStrategyA</span> <span class="token keyword">implements</span> <span class="token class-name">Strategy</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">algorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Implement algorithm A</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteStrategyB</span> <span class="token keyword">implements</span> <span class="token class-name">Strategy</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">algorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Implement algorithm B</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Context</span>
+<span class="token keyword">class</span> <span class="token class-name">Context</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Strategy</span> strategy<span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setStrategy</span><span class="token punctuation">(</span><span class="token class-name">Strategy</span> strategy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>strategy <span class="token operator">=</span> strategy<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        strategy<span class="token punctuation">.</span><span class="token function">algorithm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="单例模式-Singleton-Pattern"><a href="#单例模式-Singleton-Pattern" class="headerlink" title="单例模式(Singleton Pattern):"></a>单例模式(Singleton Pattern):</h4><h5 id="UML-5"><a href="#UML-5" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">class</span> Singleton <span class="token punctuation">{</span>
+    -instance<span class="token punctuation">:</span> Singleton
+    <span class="token punctuation">{</span>static<span class="token punctuation">}</span> +getInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Singleton
+    -Singleton<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/singleton-pattern.png" class="" title="单例模式">
+
+<h5 id="java代码-5"><a href="#java代码-5" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Singleton class</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span>
+    
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Private constructor to prevent instantiation</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="工厂方法模式-Factory-Method-Pattern"><a href="#工厂方法模式-Factory-Method-Pattern" class="headerlink" title="工厂方法模式(Factory Method Pattern):"></a>工厂方法模式(Factory Method Pattern):</h4><h5 id="UML-6"><a href="#UML-6" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Product <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +create<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteProductA implements Product <span class="token punctuation">{</span>
+    +create<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteProductB implements Product <span class="token punctuation">{</span>
+    +create<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> Creator <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +factoryMethod<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteCreatorA implements Creator <span class="token punctuation">{</span>
+    +factoryMethod<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteCreatorB implements Creator <span class="token punctuation">{</span>
+    +factoryMethod<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product
+<span class="token punctuation">}</span>
+
+ConcreteProductA <span class="token arrow operator">--&gt;</span> Product
+ConcreteProductB <span class="token arrow operator">--&gt;</span> Product
+ConcreteProductA <span class="token arrow operator">--&gt;</span> ConcreteCreatorA
+ConcreteProductB <span class="token arrow operator">--&gt;</span> ConcreteCreatorB
+ConcreteCreatorA <span class="token arrow operator">--&gt;</span> Creator
+ConcreteCreatorB <span class="token arrow operator">--&gt;</span> Creator
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/factory-method-pattern.png" class="" title="工厂方法模式">
+
+<h5 id="java代码-6"><a href="#java代码-6" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Product interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Product</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Products</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteProductA</span> <span class="token keyword">implements</span> <span class="token class-name">Product</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Create product A</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteProductB</span> <span class="token keyword">implements</span> <span class="token class-name">Product</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Create product B</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Creator interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Creator</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Product</span> <span class="token function">factoryMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Concrete Creators</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteCreatorA</span> <span class="token keyword">implements</span> <span class="token class-name">Creator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">Product</span> <span class="token function">factoryMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ConcreteProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteCreatorB</span> <span class="token keyword">implements</span> <span class="token class-name">Creator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">Product</span> <span class="token function">factoryMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ConcreteProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="组合模式-Composite-Pattern"><a href="#组合模式-Composite-Pattern" class="headerlink" title="组合模式(Composite Pattern):"></a>组合模式(Composite Pattern):</h4><h5 id="UML-7"><a href="#UML-7" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Component <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Leaf implements Component <span class="token punctuation">{</span>
+    +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Composite implements Component <span class="token punctuation">{</span>
+    -children<span class="token punctuation">:</span> List&lt;Component&gt;
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    +add<span class="token punctuation">(</span>component<span class="token punctuation">:</span> Component<span class="token punctuation">)</span>
+    +remove<span class="token punctuation">(</span>component<span class="token punctuation">:</span> Component<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+Leaf <span class="token arrow operator">--&gt;</span> Component
+Composite <span class="token arrow operator">--&gt;</span> Component
+Leaf <span class="token arrow operator">--&gt;</span> Composite
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/composite-pattern.png" class="" title="组合模式">
+
+<h5 id="java代码-7"><a href="#java代码-7" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">// Component interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Leaf</span>
+<span class="token keyword">class</span> <span class="token class-name">Leaf</span> <span class="token keyword">implements</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Leaf operation</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Composite</span>
+<span class="token keyword">class</span> <span class="token class-name">Composite</span> <span class="token keyword">implements</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Component</span><span class="token punctuation">&gt;</span></span> children <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Composite operation</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Component</span> component <span class="token operator">:</span> children<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            component<span class="token punctuation">.</span><span class="token function">operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        children<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        children<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="适配器模式-Adapter-Pattern"><a href="#适配器模式-Adapter-Pattern" class="headerlink" title="适配器模式(Adapter Pattern):"></a>适配器模式(Adapter Pattern):</h4><h5 id="UML-8"><a href="#UML-8" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Target <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +request<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Adaptee <span class="token punctuation">{</span>
+    +specificRequest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Adapter implements Target <span class="token punctuation">{</span>
+    -adaptee<span class="token punctuation">:</span> Adaptee
+    +request<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+Adaptee <span class="token arrow operator">--&gt;</span> Target
+Adapter <span class="token arrow operator">--&gt;</span> Target
+Adapter <span class="token arrow operator">--&gt;</span> Adaptee
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/adapter-pattern.png" class="" title="适配器模式">
+
+<h5 id="java代码-8"><a href="#java代码-8" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Target interface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Target</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Adaptee</span>
+<span class="token keyword">class</span> <span class="token class-name">Adaptee</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">specificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Adaptee specific request</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Adapter</span>
+<span class="token keyword">class</span> <span class="token class-name">Adapter</span> <span class="token keyword">implements</span> <span class="token class-name">Target</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Adaptee</span> adaptee<span class="token punctuation">;</span>
+    
+    <span class="token class-name">Adapter</span><span class="token punctuation">(</span><span class="token class-name">Adaptee</span> adaptee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>adaptee <span class="token operator">=</span> adaptee<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        adaptee<span class="token punctuation">.</span><span class="token function">specificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="外观模式-Facade-Pattern"><a href="#外观模式-Facade-Pattern" class="headerlink" title="外观模式(Facade Pattern):"></a>外观模式(Facade Pattern):</h4><h5 id="UML-9"><a href="#UML-9" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">class</span> SubsystemA <span class="token punctuation">{</span>
+    +operationA<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> SubsystemB <span class="token punctuation">{</span>
+    +operationB<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> SubsystemC <span class="token punctuation">{</span>
+    +operationC<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Facade <span class="token punctuation">{</span>
+    -subsystemA<span class="token punctuation">:</span> SubsystemA
+    -subsystemB<span class="token punctuation">:</span> SubsystemB
+    -subsystemC<span class="token punctuation">:</span> SubsystemC
+    +operation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+SubsystemA <span class="token arrow operator">--&gt;</span> Facade
+SubsystemB <span class="token arrow operator">--&gt;</span> Facade
+SubsystemC <span class="token arrow operator">--&gt;</span> Facade
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/facade-pattern.png" class="" title="外观模式">
+
+<h5 id="java代码-9"><a href="#java代码-9" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// SubsystemA</span>
+<span class="token keyword">class</span> <span class="token class-name">SubsystemA</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operationA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// SubsystemA operation</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// SubsystemB</span>
+<span class="token keyword">class</span> <span class="token class-name">SubsystemB</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operationB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// SubsystemB operation</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// SubsystemC</span>
+<span class="token keyword">class</span> <span class="token class-name">SubsystemC</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">operationC</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// SubsystemC operation</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Facade</span>
+<span class="token keyword">class</span> <span class="token class-name">Facade</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">SubsystemA</span> subsystemA<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">SubsystemB</span> subsystemB<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">SubsystemC</span> subsystemC<span class="token punctuation">;</span>
+    
+    <span class="token class-name">Facade</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        subsystemA <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubsystemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subsystemB <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubsystemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subsystemC <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subsystem</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="责任链模式-Chain-of-Responsibility-Pattern"><a href="#责任链模式-Chain-of-Responsibility-Pattern" class="headerlink" title="责任链模式 (Chain of Responsibility Pattern)"></a>责任链模式 (Chain of Responsibility Pattern)</h4><h5 id="UML-10"><a href="#UML-10" class="headerlink" title="UML:"></a>UML:</h5><pre class="line-numbers language-plant-uml" data-language="plant-uml"><code class="language-plant-uml"><span class="token delimiter punctuation">@startuml</span>
+<span class="token keyword">interface</span> Handler <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>abstract<span class="token punctuation">}</span> +handleRequest<span class="token punctuation">(</span>request<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span> void
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteHandler1 implements Handler <span class="token punctuation">{</span>
+    - successor<span class="token punctuation">:</span> Handler
+    +handleRequest<span class="token punctuation">(</span>request<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span> void
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> ConcreteHandler2 implements Handler <span class="token punctuation">{</span>
+    - successor<span class="token punctuation">:</span> Handler
+    +handleRequest<span class="token punctuation">(</span>request<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span> void
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> Request <span class="token punctuation">{</span>
+    +getRequestType<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> String
+<span class="token punctuation">}</span>
+Handler <span class="token arrow operator">&lt;|..</span> ConcreteHandler1
+Handler <span class="token arrow operator">&lt;|..</span> ConcreteHandler2
+<span class="token delimiter punctuation">@enduml</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/chain-pattern.png" class="" title="责任链模式">
+
+<h5 id="java代码-10"><a href="#java代码-10" class="headerlink" title="java代码:"></a>java代码:</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Handler interface</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Handler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span><span class="token class-name">Request</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ConcreteHandler1 class</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConcreteHandler1</span> <span class="token keyword">implements</span> <span class="token class-name">Handler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Handler</span> successor<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSuccessor</span><span class="token punctuation">(</span><span class="token class-name">Handler</span> successor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>successor <span class="token operator">=</span> successor<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span><span class="token class-name">Request</span> request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getRequestType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"Type1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Handle the request</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>successor <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            successor<span class="token punctuation">.</span><span class="token function">handleRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ConcreteHandler2 class</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConcreteHandler2</span> <span class="token keyword">implements</span> <span class="token class-name">Handler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Handler</span> successor<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSuccessor</span><span class="token punctuation">(</span><span class="token class-name">Handler</span> successor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>successor <span class="token operator">=</span> successor<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span><span class="token class-name">Request</span> request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getRequestType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"Type2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Handle the request</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>successor <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            successor<span class="token punctuation">.</span><span class="token function">handleRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Request class</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Request</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> requestType<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getRequestType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> requestType<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Other methods...</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。"><a href="#凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。" class="headerlink" title="凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。"></a>凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。</h3>
                 
             </div>
@@ -1207,7 +1911,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">28.8k</span>
+                        class="white-color">30k</span>
             
             
             
