@@ -405,14 +405,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.4k
+                    11.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    40 分
+                    41 分
                 </div>
                 
 
@@ -435,7 +435,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="各种性能指标的定义及如何到达各种性能指标的方法"><a href="#各种性能指标的定义及如何到达各种性能指标的方法" class="headerlink" title="各种性能指标的定义及如何到达各种性能指标的方法"></a>各种性能指标的定义及如何到达各种性能指标的方法</h2><ul>
+                <h2 id="1-8"><a href="#1-8" class="headerlink" title="1~8"></a>1~8</h2><h3 id="各种性能指标的定义及如何到达各种性能指标的方法"><a href="#各种性能指标的定义及如何到达各种性能指标的方法" class="headerlink" title="各种性能指标的定义及如何到达各种性能指标的方法"></a>各种性能指标的定义及如何到达各种性能指标的方法</h3><ul>
 <li><p>吞吐量 （Throughput）<br> 定义：单位时间内成功地传送数据的数量<br> 实现：Average 平均，Peak 峰值<br> 许多系统具有低平均但高峰值吞吐量的需求</p>
 </li>
 <li><p>响应时间（Response Time）<br> 定义：应用程序在处理请求时显示延迟的时间<br> 实现：Guaranteed time 最大响应时间  Average time 平均响应时间<br> 95%的响应在4秒以内，全部在10秒之内</p>
@@ -443,7 +443,7 @@
 <li><p>最后期限（Deadlines）<br> 定义：有些事情必须在指定的时间之前完成<br> 实现：最后期限通常与IT系统中的批处理作业相关。</p>
 </li>
 </ul>
-<h2 id="有哪些常见架构风格"><a href="#有哪些常见架构风格" class="headerlink" title="有哪些常见架构风格"></a>有哪些常见架构风格</h2><p>1）<strong>管道和过滤器</strong>（Pipe and Filter）</p>
+<h3 id="有哪些常见架构风格"><a href="#有哪些常见架构风格" class="headerlink" title="有哪些常见架构风格"></a>有哪些常见架构风格</h3><p>1）<strong>管道和过滤器</strong>（Pipe and Filter）</p>
 <ul>
 <li>管道-过滤器模式的体系结构是面向数据流的软件体系结构。</li>
 <li>它最典型的应用是在编译系统。</li>
@@ -496,13 +496,32 @@
 <li>举例：实时系统软件用来控制（核电站、汽车巡航控制）</li>
 </ul>
 <p>补充内容：<br> <strong>分布式系统</strong>（distributed system）是建立在网络之上的软件系统。分布式系统是由一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。其目的是利用更多的机器，处理更多的数据。</p>
-<h2 id="架构设计分几个层次"><a href="#架构设计分几个层次" class="headerlink" title="架构设计分几个层次"></a>架构设计分几个层次</h2><h2 id="架构师需要的核心技能是什么"><a href="#架构师需要的核心技能是什么" class="headerlink" title="架构师需要的核心技能是什么"></a>架构师需要的核心技能是什么</h2><ul>
+<h3 id="架构设计分几个层次"><a href="#架构设计分几个层次" class="headerlink" title="架构设计分几个层次"></a>架构设计分几个层次</h3><h4 id="三层系统的分层式结构"><a href="#三层系统的分层式结构" class="headerlink" title="三层系统的分层式结构"></a>三层系统的分层式结构</h4><p>  三层架构(3-tier architecture) 通常意义上的三层架构就是将整个业务应用划分为：</p>
+<ul>
+<li><p>表现层（UI）</p>
+</li>
+<li><p>业务逻辑层（BLL）</p>
+</li>
+<li><p>数据访问层（DAL）</p>
+<p><strong>区分层次的目的即为了“高内聚，低耦合”的思想。</strong></p>
+</li>
+</ul>
+<ol>
+<li>表现层（UI）：通俗讲就是展现给用户的界面，即用户在使用一个系统的时候他的所见所得。</li>
+<li>业务逻辑层（BLL）：针对具体问题的操作，也可以说是对数据层的操作，对数据业务逻辑处理。</li>
+<li>数据访问层（DAL）：该层所做事务直接操作数据库，针对数据的增添、删除、修改、查找等。</li>
+</ol>
+<img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/311633272534920.jpg" class="" title="img">
+
+<p>在软件体系架构设计中，分层式结构是最常见，也是最重要的一种结构。</p>
+<p>微软推荐的分层式结构一般分为三层，从下至上分别为：数据访问层、业务逻辑层（又或称为领域层）、表示层。</p>
+<h3 id="架构师需要的核心技能是什么"><a href="#架构师需要的核心技能是什么" class="headerlink" title="架构师需要的核心技能是什么"></a>架构师需要的核心技能是什么</h3><ul>
 <li>团队之间的交流   Liaison with stakeholders</li>
 <li>技术知识 Technology knowledge</li>
 <li>软件工程学  Software engineering</li>
 <li>风险管理 Risk managements</li>
 </ul>
-<h2 id="什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）"><a href="#什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）" class="headerlink" title="什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）"></a>什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）</h2><ul>
+<h3 id="什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）"><a href="#什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）" class="headerlink" title="什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）"></a>什么是软件架构（好几种定义，但是主要点是结构，元素，关系，接口）</h3><ul>
 <li>软件架构（software architecture）是一系列相关的抽象模式，用于指导大型软件系统各个方面的设计。</li>
 <li>软件架构是一个系统的草图。</li>
 </ul>
@@ -513,21 +532,21 @@
 </ul>
 <p>“Architecture is the fundamental organization of a system, embodied in its components, their relationships to each other and the environment, and the principles governing its design and evolution.”<br> 体系结构是一个系统的基本组织，体现在它的组件、它们彼此之间的关系和环境中，以及控制它的设计和演进的原则中。</p>
 <p>“The software architecture of a program or computing system is the structure or structures of the system, which comprise software elements, the externally visible properties of those elements, and the relationships among them.”<br> 程序或计算系统的软件架构是 系统的一个或多个结构，<br> 它包括 软件元素、这些元素的外部可见属性 和 它们之间的关系。</p>
-<h2 id="软件架构主要关注那些问题"><a href="#软件架构主要关注那些问题" class="headerlink" title="软件架构主要关注那些问题"></a>软件架构主要关注那些问题</h2><p>‘issues that will be difficult/impossible to change once the system is built’<br> “一旦系统建立后就很难或是不可能改变的问题”:<br> Quality attributes like security, performance<br> 质量属性,例如 安全性 , 性能<br> Non-functional requirements like cost, deployment hardware<br> 非功能性需求,像开销, 硬件配置</p>
-<h2 id="什么是架构风格"><a href="#什么是架构风格" class="headerlink" title="什么是架构风格"></a>什么是架构风格</h2><p>软件体系结构风格是描述某一特定 应用领域 中 系统组织方式 的 惯用模式。</p>
+<h3 id="软件架构主要关注那些问题"><a href="#软件架构主要关注那些问题" class="headerlink" title="软件架构主要关注那些问题"></a>软件架构主要关注那些问题</h3><p>‘issues that will be difficult/impossible to change once the system is built’<br> “一旦系统建立后就很难或是不可能改变的问题”:<br> Quality attributes like security, performance<br> 质量属性,例如 安全性 , 性能<br> Non-functional requirements like cost, deployment hardware<br> 非功能性需求,像开销, 硬件配置</p>
+<h3 id="什么是架构风格"><a href="#什么是架构风格" class="headerlink" title="什么是架构风格"></a>什么是架构风格</h3><p>软件体系结构风格是描述某一特定 应用领域 中 系统组织方式 的 惯用模式。</p>
 <p>体系结构风格定义一个系统家族，即一个体系结构定义一个词汇表和一组约束。词汇表中包含一些构件和连接件类型，而这组约束指出系统是如何将这些构件和连接件组合起来的。</p>
-<h2 id="什么是架构视图"><a href="#什么是架构视图" class="headerlink" title="什么是架构视图"></a>什么是架构视图</h2><p>架构视图：</p>
+<h3 id="什么是架构视图"><a href="#什么是架构视图" class="headerlink" title="什么是架构视图"></a>什么是架构视图</h3><p>架构视图：</p>
 <ul>
 <li>对于从 某一视角 或 某一点 上看到的系统所做的 简化描述 ，</li>
 <li>描述中涵盖了系统的 某一特定方面 ，而省略了此方面无关的 实体 。</li>
 </ul>
-<h2 id="软件系统中的复杂性有哪些种类"><a href="#软件系统中的复杂性有哪些种类" class="headerlink" title="软件系统中的复杂性有哪些种类"></a>软件系统中的复杂性有哪些种类</h2><h2 id="非功能需求包括哪些（三种）"><a href="#非功能需求包括哪些（三种）" class="headerlink" title="非功能需求包括哪些（三种）"></a>非功能需求包括哪些（三种）</h2><p>NFRs（Non-functional requirements）:非功能性需求:</p>
+<h2 id="9-16"><a href="#9-16" class="headerlink" title="9~16"></a>9~16</h2><h3 id="软件系统中的复杂性有哪些种类"><a href="#软件系统中的复杂性有哪些种类" class="headerlink" title="软件系统中的复杂性有哪些种类"></a>软件系统中的复杂性有哪些种类</h3><h3 id="非功能需求包括哪些（三种）"><a href="#非功能需求包括哪些（三种）" class="headerlink" title="非功能需求包括哪些（三种）"></a>非功能需求包括哪些（三种）</h3><p>NFRs（Non-functional requirements）:非功能性需求:</p>
 <ul>
 <li>Technical constraints 技术约束</li>
 <li>Business constraints 业务约束</li>
 <li>Quality attributes 质量属性<br> 是对整个系统性能等方面的 评估和验证<br> (来源PPT 12)</li>
 </ul>
-<h2 id="软件架构过程（三个迭代步骤）"><a href="#软件架构过程（三个迭代步骤）" class="headerlink" title="软件架构过程（三个迭代步骤）"></a>软件架构过程（三个迭代步骤）</h2><img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/webp.png" class="" title="软件架构过程">
+<h3 id="软件架构过程（三个迭代步骤）"><a href="#软件架构过程（三个迭代步骤）" class="headerlink" title="软件架构过程（三个迭代步骤）"></a>软件架构过程（三个迭代步骤）</h3><img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/webp.png" class="" title="软件架构过程">
 
 <p>1）<strong>确定架构需求</strong>：架构上重要的需求（结构用例）—基本的质量和系统的非功能性需求<br> 2）<strong>架构设计</strong>：迭代的设计步骤—风险识别是一个重要的输出设计<br> 3）<strong>结构验证</strong>：</p>
 <ul>
@@ -535,7 +554,7 @@
 <li>验证必须实现在项目时间和预算的约束，关键是要尽可能严格的和有效的；</li>
 <li>验证一个架构设计提出了严峻的挑战，因为这是一个设计不能执行或测试，包括新和COTS组件集成；<br> (来源 doc ppt202)</li>
 </ul>
-<h2 id="软件质量属性主要包括哪些（五种）"><a href="#软件质量属性主要包括哪些（五种）" class="headerlink" title="软件质量属性主要包括哪些（五种）"></a>软件质量属性主要包括哪些（五种）</h2><ul>
+<h3 id="软件质量属性主要包括哪些（五种）"><a href="#软件质量属性主要包括哪些（五种）" class="headerlink" title="软件质量属性主要包括哪些（五种）"></a>软件质量属性主要包括哪些（五种）</h3><ul>
 <li>Reliability <strong>可靠性</strong>：<br> <em>可靠性参数：平均故障间隔时间（MTBF），顾名思义，是硬件模块故障之间的平均时间。它是制造商在硬件模块发生故障之前估计的平均时间。<br> FITS是表示MTBF的更直观的方式。FITS只是十亿小时（即1000,000,000小时）内模块的故障总数。</em></li>
 <li>Availability <strong>可用性</strong>：<br> <em>衡量系统的可用性可以用公式 MTBF／(MTBF+MTTR)，其中MTBF为系统出错的时间间隔也就是平均正常工作时间，而MTTR表示系统修复错误用的时间。当然上面的公式计算出的结果越大表示系统的可用性越好。</em></li>
 <li>Portability <strong>可移植性</strong>：跨平台</li>
@@ -543,10 +562,10 @@
 <li>Performance (!) <strong>性能</strong>：快</li>
 </ul>
 <p><strong>ppt1-8 116页</strong></p>
-<h2 id="软件可用性取决于（三种时间）"><a href="#软件可用性取决于（三种时间）" class="headerlink" title="软件可用性取决于（三种时间）"></a>软件可用性取决于（三种时间）</h2><p>Time to detect failure 故障 <strong>检测</strong> 时间</p>
+<h3 id="软件可用性取决于（三种时间）"><a href="#软件可用性取决于（三种时间）" class="headerlink" title="软件可用性取决于（三种时间）"></a>软件可用性取决于（三种时间）</h3><p>Time to detect failure 故障 <strong>检测</strong> 时间</p>
 <p>Time to correct failure <strong>纠正</strong> 失败时间</p>
 <p>Time to restart application <strong>重新启动</strong> 应用程序时间<br> (PPT 146页)</p>
-<h2 id="伸缩性涉及那些方面（四种）"><a href="#伸缩性涉及那些方面（四种）" class="headerlink" title="伸缩性涉及那些方面（四种）"></a>伸缩性涉及那些方面（四种）</h2><ul>
+<h3 id="伸缩性涉及那些方面（四种）"><a href="#伸缩性涉及那些方面（四种）" class="headerlink" title="伸缩性涉及那些方面（四种）"></a>伸缩性涉及那些方面（四种）</h3><ul>
 <li>伸缩性定义：(来源 <strong>百度百科</strong>) 可伸缩性/可扩展性(Scalable/scalability)</li>
 <li>可伸缩性(可扩展性)是一种对软件系统计算处理能力的设计指标，高可伸缩性代表一种<strong>弹性</strong>，在系统扩展成长过程中，软件能够保证旺盛的生命力，通过很少的改动甚至只是硬件设备的添置，就能实现整个系统处理能力的线性增长，实现高吞吐量和低延迟高性能。</li>
 <li>可伸缩性和纯粹性能调优有本质区别， 可伸缩性是高性能、低成本和可维护性等诸多因素的综合考量和平衡，可伸缩性讲究平滑线性的性能提升，更侧重于系统的水平伸缩，通过廉价的服务器实现分布式计算；而普通性能优化只是单台机器的性能指标优化。他们共同点都是根据应用系统特点在吞吐量和延迟之间进行一个侧重选择，当然水平伸缩分区后会带来CAP定理约束。</li>
@@ -557,7 +576,7 @@
 <p>2）Connections  <strong>连接</strong><br> 如果与应用程序同时连接的数量增加，会发生什么情况呢<br> 如果每个连接都消耗资源?<br> 超过连接的最大数量?<br> ISP的例子:<br> 每个用户连接生成一个新进程<br> 每个服务器上的虚拟内存超过2000个用户<br> 需要支持100k用户</p>
 <p>3）Data size <strong>数据大小</strong><br> 当应用程序处理的数据增大时，它的行为如何?<br> 聊天应用程序平均消息大小翻倍?<br> 数据库表大小从100万行增长到2000万行?<br> 图像分析算法处理100MB而不是1MB的图像?<br> 应用程序/算法能否扩展以处理增加的数据需求?</p>
 <p>4）Deployments <strong>部署</strong><br> 安装/部署应用程序的工作量如何随着安装基数的增长而增加?<br> 安装新用户?<br> 安装新的服务器?<br> 解决方案通常围绕自动下载/安装<br> 例如从互联网下载应用程式<br> <strong>ppt1-8 127页</strong></p>
-<h2 id="吞吐率指标"><a href="#吞吐率指标" class="headerlink" title="吞吐率指标"></a>吞吐率指标</h2><p><strong>PPT 120</strong><br> Measure of the amount of work an application must perform in unit time<br> 度量应用程序在单位时间内必须执行的工作量</p>
+<h3 id="吞吐率指标"><a href="#吞吐率指标" class="headerlink" title="吞吐率指标"></a>吞吐率指标</h3><p><strong>PPT 120</strong><br> Measure of the amount of work an application must perform in unit time<br> 度量应用程序在单位时间内必须执行的工作量</p>
 <ul>
 <li>Transactions per second 每秒事务数</li>
 <li>Messages per minute 每分钟的消息</li>
@@ -567,7 +586,7 @@
 <li>Messages per second (msp) 每秒的信息</li>
 <li>Maximum sustainable throughput (MST) 最大可持续吞吐量</li>
 </ul>
-<h2 id="架构元素的通信包括哪些"><a href="#架构元素的通信包括哪些" class="headerlink" title="架构元素的通信包括哪些"></a>架构元素的通信包括哪些</h2><p>（PPT ch1-ch8 slide210、212、218）</p>
+<h3 id="架构元素的通信包括哪些"><a href="#架构元素的通信包括哪些" class="headerlink" title="架构元素的通信包括哪些"></a>架构元素的通信包括哪些</h3><p>（PPT ch1-ch8 slide210、212、218）</p>
 <ul>
 <li>Synchronous communications 同步通信</li>
 <li>Asynchronous communications 异步通信</li>
@@ -587,7 +606,7 @@
 <li>Concurrent/parallel 并发/并行</li>
 <li>Synchronization 同步</li>
 </ul>
-<h2 id="各种架构风格的组件和连接器是什么"><a href="#各种架构风格的组件和连接器是什么" class="headerlink" title="各种架构风格的组件和连接器是什么"></a>各种架构风格的组件和连接器是什么</h2><p>1）<strong>管道和过滤器架构风格</strong>PPT 40页<br> <strong>组件</strong>：称为过滤器，应用于对局部的输入流的转换，经常增长的计算，因此，在输入结束前输出就开始了。<br> <strong>连接器：</strong>称为管道，给流提供管道，把一个过滤器的输出传输到另一个输入。</p>
+<h2 id="17-24"><a href="#17-24" class="headerlink" title="17~24"></a>17~24</h2><h3 id="各种架构风格的组件和连接器是什么"><a href="#各种架构风格的组件和连接器是什么" class="headerlink" title="各种架构风格的组件和连接器是什么"></a>各种架构风格的组件和连接器是什么</h3><p>1）<strong>管道和过滤器架构风格</strong>PPT 40页<br> <strong>组件</strong>：称为过滤器，应用于对局部的输入流的转换，经常增长的计算，因此，在输入结束前输出就开始了。<br> <strong>连接器：</strong>称为管道，给流提供管道，把一个过滤器的输出传输到另一个输入。</p>
 <p>2）<strong>面向对象风格</strong> PPT49页<br> <strong>组件</strong>：对象<br> <strong>连接器：</strong>功能和过程调用（方法）</p>
 <p>3）<strong>隐式调用风格</strong><br> <strong>组件</strong>：模块（？？？）<br> <strong>连接器：</strong>广播系统<br> <em>隐式调用系统中的连接器除了<br> 事件通知  过程调用  之间的绑定外，<br> 通常还包括  传统的过程调用</em></p>
 <p>4）<strong>客户-服务器风格</strong> PPT64页<br> <strong>组件</strong>：服务器：标准独立的组件提供特别的服务，如打印，数据管理等。客户端：组件调用服务器提供的服务。<br> <strong>连接器</strong>：网络，允许客户端访问远程服务器。</p>
@@ -595,10 +614,10 @@
 <p>6）<strong>仓库风格</strong> PPT80页<br> <strong>组件</strong>：<br> 表示系统正确状态的中心数据结构。<br> <em>A central data structure representing the correct state of the system.</em><br> 操作中心数据结构的独立组件的集合。<br> <em>A collection of independent components that operate on the central data structure.</em><br> <strong>连接器</strong>：典型地过程调用或是直接内存访问</p>
 <p>7）<strong>解释程序风格</strong> PPT87页<br> <strong>组件</strong>：<br> 包括执行引擎的一个状态机和三个内存:<br> <em>include one state machine for the execution engine and three memories:</em><br> 执行引擎的当前状态<br> <em>current state of the execution engine</em><br> 程序解释<br> <em>program being interpreted</em><br> 正在解释的程序的当前状态<br> <em>current state of the program being interpreted</em><br> <strong>连接器</strong>：<br> procedure calls 过程调用<br> direct memory accesses. 直接内存访问</p>
 <p>8）<strong>过程控制风格</strong> PPT94页<br> <strong>组件</strong>：过程定义：包括操作一些过程变量的机制，控制算法：决定如何去操作过程变量<br> <strong>连接器</strong>： 数据流关系  data flow relations</p>
-<h2 id="软件性能指标主要有哪几种（三种）"><a href="#软件性能指标主要有哪几种（三种）" class="headerlink" title="软件性能指标主要有哪几种（三种）"></a>软件性能指标主要有哪几种（三种）</h2><p>吞吐量、响应时间、最后期限 见第一题</p>
-<h2 id="响应时间的度量（两种）"><a href="#响应时间的度量（两种）" class="headerlink" title="响应时间的度量（两种）"></a>响应时间的度量（两种）</h2><p>Guaranteed time 最大响应时间<br>Average time 平均响应时间</p>
+<h3 id="软件性能指标主要有哪几种（三种）"><a href="#软件性能指标主要有哪几种（三种）" class="headerlink" title="软件性能指标主要有哪几种（三种）"></a>软件性能指标主要有哪几种（三种）</h3><p>吞吐量、响应时间、最后期限 见第一题</p>
+<h3 id="响应时间的度量（两种）"><a href="#响应时间的度量（两种）" class="headerlink" title="响应时间的度量（两种）"></a>响应时间的度量（两种）</h3><p>Guaranteed time 最大响应时间<br>Average time 平均响应时间</p>
 <p><strong>PPT 122</strong></p>
-<h2 id="安全性质量指标主要有哪几种（五种）"><a href="#安全性质量指标主要有哪几种（五种）" class="headerlink" title="安全性质量指标主要有哪几种（五种）"></a>安全性质量指标主要有哪几种（五种）</h2><ul>
+<h3 id="安全性质量指标主要有哪几种（五种）"><a href="#安全性质量指标主要有哪几种（五种）" class="headerlink" title="安全性质量指标主要有哪几种（五种）"></a>安全性质量指标主要有哪几种（五种）</h3><ul>
 <li><strong>Authentication:</strong> Applications can verify the identity of their users and other applications with which they communicate.<br> <strong>身份验证</strong>：应用程序可以验证他们的用户的身份和他们通信的其他应用程序。</li>
 <li><strong>Authorization:</strong> Authenticated users and applications have defined access rights to the resources of the system.<br> <strong>授权</strong>：身份验证的用户和应用程序定义了系统资源的访问权限。</li>
 <li><strong>Encryption:</strong> The messages sent to/from the application are encrypted.<br> <strong>加密</strong>：从应用程序发送到/从应用程序的消息是加密的。</li>
@@ -606,13 +625,13 @@
 <li><strong>Non-repudiation:</strong> The sender of a message has proof of delivery and the receiver is assured of the sender’s identity. This means neither can subsequently refute their participation in the message exchange.<br> <strong>不可否认性</strong>：消息的发送方有交付证明，接收方可以确定发送方的身份。这意味着，双方随后都不能否认他们参与了信息交换。</li>
 </ul>
 <p><strong>PPT 142页</strong></p>
-<h2 id="实现高可用性的策略（三种）"><a href="#实现高可用性的策略（三种）" class="headerlink" title="实现高可用性的策略（三种）"></a>实现高可用性的策略（三种）</h2><ul>
+<h3 id="实现高可用性的策略（三种）"><a href="#实现高可用性的策略（三种）" class="headerlink" title="实现高可用性的策略（三种）"></a>实现高可用性的策略（三种）</h3><ul>
 <li>Eliminate single points of failure <strong>消除单点故障</strong><br> <em>是指一个系统的这样一个部件，如果它失效或停止运转，将会导致整个系统不能工作。我们当然不希望看到，在一个要求高度可用性的系统中存在这样的部分，但这种情况在网络，软件应用以及其它工业系统中都存在。</em></li>
 <li>Replication and failover        <strong>复制和故障转移</strong><br> <em>failover n. 失效备援（为系统备援能力的一种，当系统中其中一项设备失效而无法运作时，另一项设备即可自动接手原失效系统所执行的工作）</em></li>
 <li>Automatic detection and restart <strong>自动检测和重新启动</strong></li>
 </ul>
 <p><strong>PPT 146</strong></p>
-<h2 id="信息隐藏原理"><a href="#信息隐藏原理" class="headerlink" title="信息隐藏原理"></a>信息隐藏原理</h2><p><strong>PPT lecture 9 88页</strong></p>
+<h3 id="信息隐藏原理"><a href="#信息隐藏原理" class="headerlink" title="信息隐藏原理"></a>信息隐藏原理</h3><p><strong>PPT lecture 9 88页</strong></p>
 <ul>
 <li>信息隐藏指在设计和确定模块时，使得一个模块内包含的特定信息（过程或数据），对于不需要这些信息的其他模块来说，是不可访问的。</li>
 <li>信息隐藏（封装）主要是为了提高软件的可重用性和可维护性。信息隐藏造成了系统各个部分耦合性低。系统是由各个部分构成的，如果这些部分耦合性低的话，那么这个系统开发、维护等就较容易。</li>
@@ -621,18 +640,18 @@
 <p>信息隐藏涉及两个算法：信息嵌入算法和信息提取算法，如下图：<br> 信息隐藏的原理框图</p>
 <img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/data.png" class="" title="信息隐藏">
 
-<h2 id="什么是关注点，关注点的类型，关注点分离"><a href="#什么是关注点，关注点的类型，关注点分离" class="headerlink" title="什么是关注点，关注点的类型，关注点分离"></a>什么是关注点，关注点的类型，关注点分离</h2><p>关注点分离（Separation of concerns，SOC）：<br> Presentation, business and data handling logic are clearly partitioned in different tiers.<br> 表示、业务和数据处理逻辑清楚地划分在不同的层中。<br> <strong>ppt 210</strong></p>
+<h3 id="什么是关注点，关注点的类型，关注点分离"><a href="#什么是关注点，关注点的类型，关注点分离" class="headerlink" title="什么是关注点，关注点的类型，关注点分离"></a>什么是关注点，关注点的类型，关注点分离</h3><p>关注点分离（Separation of concerns，SOC）：<br> Presentation, business and data handling logic are clearly partitioned in different tiers.<br> 表示、业务和数据处理逻辑清楚地划分在不同的层中。<br> <strong>ppt 210</strong></p>
 <p>SoC是将软件分解成不同的特性的过程，这些特性封装了其他类可以使用的独特行为和数据。通常，关注点表示类的特性或行为。将程序分离成离散职责的行为显著地提高了代码重用、维护和可测试性。<br> <strong>PPT Review of Java Slide 36</strong></p>
 <p>关注点分离（Separation of concerns，SOC）<br> 1）大体思路是,先将复杂问题做合理的分解,再分别仔细研究问题的不同侧面(关注点)，最后综合各方面的结果，合成整体的解决方案。<br> 2）是对只与“特定概念、目标”(关注点)相关联的软件组成部分进行“标识、封装和操纵”的能力，即标识、封装和操纵关注点的能力。是处理复杂性的一个原则。由于关注点混杂在一起会导致复杂性大大增加，所以能够把不同的关注点分离开来，分别处理就是处理复杂性的一个原则，一种方法。</p>
 <p>关注点分离是面向方面的[程序设计]的核心概念。分离关注点使得解决特定领域问题的代码从业务逻辑中独立出来，业务逻辑的代码中不再含有针对特定领域问题代码的调用(将针对特定领域问题代码抽象化成较少的程式码，例如将代码封装成function或是class)，业务逻辑同特定领域问题的关系通过侧面来封装、维护，这样原本分散在在整个应用程序中的变动就可以很好的管理起来。<br> <strong>百度百科</strong></p>
-<h2 id="什么是职责驱动的设计"><a href="#什么是职责驱动的设计" class="headerlink" title="什么是职责驱动的设计"></a>什么是职责驱动的设计</h2><p>Responsibility-Driven Design (RDD)</p>
+<h3 id="什么是职责驱动的设计"><a href="#什么是职责驱动的设计" class="headerlink" title="什么是职责驱动的设计"></a>什么是职责驱动的设计</h3><p>Responsibility-Driven Design (RDD)</p>
 <ul>
 <li>Detailed object design is usually done from the point of view of the metaphor of:<br> 详细的对象设计通常是从隐喻的角度进行的:<br> 1.Objects have responsibilities<br> 对象有责任<br> 2.Objects collaborate<br> 合作对象</li>
 <li>Responsibilities are an abstraction.<br> 责任是抽象的。<br> 1.The responsibility for persistence.<br> 坚持的责任。<br> Large-grained responsibility.<br> 大粒度的责任。<br> 2.The responsibility for the sales tax calculation.<br> 负责营业税的计算。<br> More fine-grained responsibility.<br> 更细粒度的责任。<br> <strong>ppt</strong></li>
 <li>职责驱动设计即如何给相互协作的对象分配职责，主要关注的是职责、角色以及协作。</li>
 <li>职业驱动设计就是职责必须匹配。<br> 什么是职责呢？简单地说，一个类或构件的职责包括两个方面：<br> 一个是知道的事，对于一个类来说就是他的属性；<br> 一个是能做的事，对于一个类来说就是他的方法。<br> <strong>百度百科</strong></li>
 </ul>
-<h2 id="GRASP模式的具体内容，各种模式的定义，解决的什么问题"><a href="#GRASP模式的具体内容，各种模式的定义，解决的什么问题" class="headerlink" title="GRASP模式的具体内容，各种模式的定义，解决的什么问题"></a>GRASP模式的具体内容，各种模式的定义，解决的什么问题</h2><p>1）创造者 Creator<br> 分配给类B职责来创造类A的一个实例如果：<br> （1） B聚合A的对象<br> （2） B包含A的对象<br> （3） B记录A的对象的实例<br> （4） B紧密地使用A的对象<br> （5） B被创建时有初始化的数据传递给</p>
+<h2 id="25-32"><a href="#25-32" class="headerlink" title="25~32"></a>25~32</h2><h3 id="GRASP模式的具体内容，各种模式的定义，解决的什么问题"><a href="#GRASP模式的具体内容，各种模式的定义，解决的什么问题" class="headerlink" title="GRASP模式的具体内容，各种模式的定义，解决的什么问题"></a>GRASP模式的具体内容，各种模式的定义，解决的什么问题</h3><p>1）创造者 Creator<br> 分配给类B职责来创造类A的一个实例如果：<br> （1） B聚合A的对象<br> （2） B包含A的对象<br> （3） B记录A的对象的实例<br> （4） B紧密地使用A的对象<br> （5） B被创建时有初始化的数据传递给</p>
 <p>解决方案：将创建一个类A的实例的职责指派给类B的实例，<br> 如果下列条件满足的话：<br> a) B聚合了A对象<br> b) B包含了A对象<br> c) B纪录了A对象的实例<br> d) B要经常使用A对象<br> e) 当A的实例被创建时，B具有要传递给A的初始化数据(也就是说B是创建A的实例这项任务的信息专家)<br> f) B是A对象的创建者<br> 如果以上条件中不止一条成立的话，那么最好让B聚集或包含A</p>
 <p>通俗点就是：我要用你所以我来创建你，请不要让别人创建你<br> 这个模式是支持低耦合度原则的一个体现</p>
 <p>2）信息专家 Information Expert<br> 在设计对象（类）时，如果某个类能够在某方面具有完整信息，足以实现某责任，就将这个责任分配给这个类，<br> 解决方案：将职责分配给具有履行职责所需要的信息的类<br> 通俗点就是：该干嘛干嘛去，别管别人的闲事或者我的职责就是搞这个，别的事不管。<br> 举个简单的例子，如果有一个类是专门处理字符串相关的类，那么这个类只能有字符串处理相关的方法，而不要将日期处理的方法加进来。也就是提高软件高内聚一种原则。</p>
@@ -655,7 +674,7 @@
 <li>自己只干自己的事（职责的内聚）</li>
 </ul>
 <p><strong>来源 doc</strong></p>
-<h2 id="OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java-review-PPT中）"><a href="#OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java-review-PPT中）" class="headerlink" title="OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java review PPT中）"></a>OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java review PPT中）</h2><p>五个基本原则：（S.O.L.I.D）:<br> 1）<strong>单一职责原则 (SPR 单一功能原则)</strong><br> 这个原则和关注点分离紧密联系。它陈述了<strong>每个对象应该只有一个理由去改变，单一聚焦在职责上</strong>。通过依附这个原则，你避免了庞大的类的设计问题，那就像瑞士的军刀。有了精确的对象，你再次增加了系统的可读性和可维护性。</p>
+<h3 id="OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java-review-PPT中）"><a href="#OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java-review-PPT中）" class="headerlink" title="OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java review PPT中）"></a>OO设计的五个基本原则及课件中讲述的其它软件原理（主要在Java review PPT中）</h3><p>五个基本原则：（S.O.L.I.D）:<br> 1）<strong>单一职责原则 (SPR 单一功能原则)</strong><br> 这个原则和关注点分离紧密联系。它陈述了<strong>每个对象应该只有一个理由去改变，单一聚焦在职责上</strong>。通过依附这个原则，你避免了庞大的类的设计问题，那就像瑞士的军刀。有了精确的对象，你再次增加了系统的可读性和可维护性。</p>
 <p>2）<strong>开闭原则 (OCP 开闭原则)</strong><br> 这个原则陈述了类应该<strong>对扩展开放，对修改关闭</strong>，那样你就能够添加新的特征，扩展一个类而不用改变它内部的行为。这个原则旨在避免破坏存在的类及依赖它的其他类，这使得你的整个应用程序中产生故障和错误的涟漪。</p>
 <p>3)<strong>Liskov替换原则 (LSP 里式替换原则)</strong><br> Liskov替换原则要求你应该能够使用任何衍生出的类代替父类，不用修改就有同样的行为。这个原则与开闭原则一致，它保证了<strong>一个衍生出的类不影响父类的行为</strong>，或者说，衍生出的类必须能够被它们的基类替代。</p>
 <p>4)<strong>接口分离原则 (ISP 接口隔离原则)</strong><br> 这个原则是将一个抽象方法分裂成几组职责，给这些组分配接口来防止客户端实现一个很大的接口，这个接口容纳了很多它们不使用的方法。目的是为了让类使用相同的接口只需要实现一些具体的方法，而不是有很多方法的庞大的接口。<strong>不应强迫客户程序实现一个它用不上的接口。</strong></p>
@@ -666,7 +685,7 @@
 <li>面向抽象原则<br> 设计一个类时，不让该类面向具体的类，而是面向抽象类或接口</li>
 <li>高内聚-低耦合原则<br> 如果类中的方法是一组相关的行为，则称该类是高内聚的，反之称为低内聚的。 所谓低耦合就是尽量不要让一个类含有太多的其它类的实例的引用，以避免修改系统的其中一部分会影响到其它部分。</li>
 </ul>
-<h2 id="组合，继承，针对接口编程，黑盒，白盒重用"><a href="#组合，继承，针对接口编程，黑盒，白盒重用" class="headerlink" title="组合，继承，针对接口编程，黑盒，白盒重用"></a>组合，继承，针对接口编程，黑盒，白盒重用</h2><p>1）组合：<br> 指在新类里面创建原有类的对象，重复利用已有类的功能。</p>
+<h3 id="组合，继承，针对接口编程，黑盒，白盒重用"><a href="#组合，继承，针对接口编程，黑盒，白盒重用" class="headerlink" title="组合，继承，针对接口编程，黑盒，白盒重用"></a>组合，继承，针对接口编程，黑盒，白盒重用</h3><p>1）组合：<br> 指在新类里面创建原有类的对象，重复利用已有类的功能。</p>
 <p>优点：<br> 包含对象由包含类通过其接口访问<br> “黑盒”重用，因为包含对象的内部细节不可见</p>
 <ul>
 <li>良好的封装</li>
@@ -688,22 +707,22 @@
 <li>补充：<br> 组合(has-a)关系可以显式地获得被包含类（继承中称为父类）的对象，而继承(is-a)则是隐式地获得父类的对象，被包含类和父类对应，而组合外部类和子类对应。</li>
 </ul>
 <p>组合关系是 局部类和整体类的关系<br> 继承关系 父类和子类的关系<br> (来源doc,网络)</p>
-<h2 id="什么是抽象，封装"><a href="#什么是抽象，封装" class="headerlink" title="什么是抽象，封装"></a>什么是抽象，封装</h2><h2 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h2><p>(来源DOC)<br> •MVC是 模型-视图-控制器 的缩写<br> <em>它代表了一种软件设计模式，1978年开发在施乐帕克研究中心(!)<br> 它解释了一种分离视觉、交互和数据组件的方法。<br> 非常受欢迎,广泛用于Java和其他语言</em></p>
+<h3 id="什么是抽象，封装"><a href="#什么是抽象，封装" class="headerlink" title="什么是抽象，封装"></a>什么是抽象，封装</h3><h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><p>(来源DOC)<br> •MVC是 模型-视图-控制器 的缩写<br> <em>它代表了一种软件设计模式，1978年开发在施乐帕克研究中心(!)<br> 它解释了一种分离视觉、交互和数据组件的方法。<br> 非常受欢迎,广泛用于Java和其他语言</em></p>
 <p>（百度百科）<br> Model（模型）是应用程序中用于处理应用程序数据逻辑的部分。<br> 通常模型对象负责在数据库中存取数据。<br> View（视图）是应用程序中处理数据显示的部分。<br> 通常视图是依据模型数据创建的。<br> Controller（控制器）是应用程序中处理用户交互的部分。<br> 通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据。</p>
 <p><strong>模型</strong> ：维护应用程序的状态和数据的XML文档<br> •“模型”包含的数据<br> •有一些方法来访问并可能更新它的内容。<br> •通常,它实现了一个允许模型交互的接口。<br> •实现了一个允许退出和取代的接口，并不伴随编程改变</p>
 <p><strong>视图</strong> ：XML文档的呈现<br> •视图提供模型的可视化表示。<br> •在任何时候都可以有多个视图表示模型。<br> •例如,一个公司财务状况随着时间的推移可以用一个表和图表示。<br> •只有两种不同的视图表示相同的数据。<br> •当模型更新时，所有视图被通知然后有机会更新</p>
 <p><strong>控制器</strong> ：用户界面呈现给用户操作的应用程序<br> •用户与控制器进行交互。<br> •它解释鼠标移动,点击按键等<br> •活动与模型沟通，如:删除行,插入行等<br> •它的模型的交互间接导致视图的更新</p>
 <img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/pic.png" class="" title="动态特性">
 
-<h2 id="企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）"><a href="#企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）" class="headerlink" title="企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）"></a>企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）</h2><p>（PPT ch9 slide 110）<br> 1）表现层：提供服务，显示信息。页面控制器，模板视图，前端控制器，转换视图。<br> 2）领域层：领域逻辑，领域中真正的核心。也称为业务逻辑，它是应用程序必须做的所有领域相关工作：包括根据输入数据和已有数据进行计算，对从表现层输入的数据进行验证以及根据从表现层接受的命令来确定应该调试哪些数据源逻辑。事物脚本，领域模型，表模块，活动记录。<br> 3）数据源层：与数据库、系统消息系统、事务管理器及其他软件包进行通信。最主要的数据源逻辑就是数据库，主要责任是存储持久数据。行数据网关，表数据网关，数据映射程序，表模块，活动记录。</p>
-<h2 id="Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）"><a href="#Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）" class="headerlink" title="Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）"></a>Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）</h2><h2 id="4-1视图"><a href="#4-1视图" class="headerlink" title="4+1视图"></a>4+1视图</h2><p>“4+1”视图模型即从5个不同的视角（逻辑视图，进程视图，物理视图，开发视图<br> 和场景视图）来描述软件体系结构。<br> 每个视图之关心系统的一个侧面，5个视图结合在一起才能反映系统的软件体系结构的全部内容。</p>
+<h3 id="企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）"><a href="#企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）" class="headerlink" title="企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）"></a>企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）</h3><p>（PPT ch9 slide 110）<br> 1）表现层：提供服务，显示信息。页面控制器，模板视图，前端控制器，转换视图。<br> 2）领域层：领域逻辑，领域中真正的核心。也称为业务逻辑，它是应用程序必须做的所有领域相关工作：包括根据输入数据和已有数据进行计算，对从表现层输入的数据进行验证以及根据从表现层接受的命令来确定应该调试哪些数据源逻辑。事物脚本，领域模型，表模块，活动记录。<br> 3）数据源层：与数据库、系统消息系统、事务管理器及其他软件包进行通信。最主要的数据源逻辑就是数据库，主要责任是存储持久数据。行数据网关，表数据网关，数据映射程序，表模块，活动记录。</p>
+<h3 id="Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）"><a href="#Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）" class="headerlink" title="Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）"></a>Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）</h3><h3 id="4-1视图"><a href="#4-1视图" class="headerlink" title="4+1视图"></a>4+1视图</h3><p>“4+1”视图模型即从5个不同的视角（逻辑视图，进程视图，物理视图，开发视图<br> 和场景视图）来描述软件体系结构。<br> 每个视图之关心系统的一个侧面，5个视图结合在一起才能反映系统的软件体系结构的全部内容。</p>
 <p>逻辑视图（Logical View）：<br> 过程视图：描述架构元素之间的并发和通信<br> 物理视图：描绘主要的过程和组件是如何映像到硬件上的<br> 开发视图：俘获软件组件内部的结构，如配置管理工具</p>
 <p>架构用例：俘获架构的需求；和不止一种视图相关</p>
 <p><strong>百度百科</strong><br> 逻辑视图（Logical View）设计的对象模型（使用[面向对象]的设计方法时）。<br> 过程视图（Process View）捕捉设计的并发和同步特征。<br> 物理视图（Physical View）描述了软件到硬件的映射，反映了分布式特性。<br> 开发视图（Development View）描述了在[开发环境]中软件的静态组织结构。</p>
 <p>架构的描述，即所做的各种决定，可以围绕着这四个视图来组织，然后由一些用例 （use cases）或场景(scenarios)来说明，从而形成了第五个视图。</p>
 <img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/webp-1703311398704-12.png" class="" title="四加一视图">
 
-<h2 id="应用的集成策略"><a href="#应用的集成策略" class="headerlink" title="应用的集成策略"></a>应用的集成策略</h2><img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/webp-1703311427763-16.png" class="" title="应用的集成策略">
+<h2 id="33-37"><a href="#33-37" class="headerlink" title="33~37"></a>33~37</h2><h3 id="应用的集成策略"><a href="#应用的集成策略" class="headerlink" title="应用的集成策略"></a>应用的集成策略</h3><img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/webp-1703311427763-16.png" class="" title="应用的集成策略">
 
 <ul>
 <li>Data – expose application data for access by other components<br> 公开应用程序数据供其他组件访问</li>
@@ -722,7 +741,7 @@
 <li>Scalability：The application must be able to handle a peak load of 500 concurrent users during the enrollment period.<br> 可伸缩性:应用程序必须能够处理500个并发用户的峰值负载在招生期间。</li>
 <li>Modifiability: The architecture must support a phased migration from the current Forth Generation Language (4GL) version to a .NET systems technology solution.<br> 可修改性:体系结构必须支持从当前的第四代语言(4GL)版本到. net系统技术解决方案的阶段性迁移。</li>
 </ul>
-<h2 id="掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，"><a href="#掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，" class="headerlink" title="掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，"></a>掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，</h2><h2 id="单例模式，工厂方法模式，组合模式，"><a href="#单例模式，工厂方法模式，组合模式，" class="headerlink" title="单例模式，工厂方法模式，组合模式，"></a>单例模式，工厂方法模式，组合模式，</h2><h2 id="适配器模式，外观模式，责任链模式的UML图和java代码"><a href="#适配器模式，外观模式，责任链模式的UML图和java代码" class="headerlink" title="适配器模式，外观模式，责任链模式的UML图和java代码"></a>适配器模式，外观模式，责任链模式的UML图和java代码</h2><h2 id="凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。"><a href="#凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。" class="headerlink" title="凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。"></a>凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。</h2>
+<h3 id="掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，"><a href="#掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，" class="headerlink" title="掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，"></a>掌握：命令模式，状态模式，装饰模式，观察者模式，策略模式，</h3><h3 id="单例模式，工厂方法模式，组合模式，"><a href="#单例模式，工厂方法模式，组合模式，" class="headerlink" title="单例模式，工厂方法模式，组合模式，"></a>单例模式，工厂方法模式，组合模式，</h3><h3 id="适配器模式，外观模式，责任链模式的UML图和java代码"><a href="#适配器模式，外观模式，责任链模式的UML图和java代码" class="headerlink" title="适配器模式，外观模式，责任链模式的UML图和java代码"></a>适配器模式，外观模式，责任链模式的UML图和java代码</h3><h3 id="凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。"><a href="#凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。" class="headerlink" title="凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。"></a>凡是课件里有关架构的具体例子（一般都有UML图或有代码）都需要仔细体会，重点搞清楚实验指导书里的各个步骤过程怎么做的。</h3>
                 
             </div>
             <hr/>
@@ -1187,7 +1206,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">28.6k</span>
+                        class="white-color">28.8k</span>
             
             
             
