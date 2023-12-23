@@ -753,7 +753,9 @@
 <img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/pic.png" class="" title="动态特性">
 
 <h3 id="企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）"><a href="#企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）" class="headerlink" title="企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）"></a>企业应用架构有那三层，各层主要做什么。在各层有那些主要的模式，各层的各种模式的定义和结构内容（展现层，领域层，数据源层）</h3><p>（PPT ch9 slide 110）<br> 1）表现层：提供服务，显示信息。页面控制器，模板视图，前端控制器，转换视图。<br> 2）领域层：领域逻辑，领域中真正的核心。也称为业务逻辑，它是应用程序必须做的所有领域相关工作：包括根据输入数据和已有数据进行计算，对从表现层输入的数据进行验证以及根据从表现层接受的命令来确定应该调试哪些数据源逻辑。事物脚本，领域模型，表模块，活动记录。<br> 3）数据源层：与数据库、系统消息系统、事务管理器及其他软件包进行通信。最主要的数据源逻辑就是数据库，主要责任是存储持久数据。行数据网关，表数据网关，数据映射程序，表模块，活动记录。</p>
-<h3 id="Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）"><a href="#Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）" class="headerlink" title="Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）"></a>Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）</h3><h3 id="4-1视图"><a href="#4-1视图" class="headerlink" title="4+1视图"></a>4+1视图</h3><p>“4+1”视图模型即从5个不同的视角（逻辑视图，进程视图，物理视图，开发视图<br> 和场景视图）来描述软件体系结构。<br> 每个视图之关心系统的一个侧面，5个视图结合在一起才能反映系统的软件体系结构的全部内容。</p>
+<h3 id="Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）"><a href="#Larman的敏捷UP设计方法的具体步骤（Larman’s-Design-Process）" class="headerlink" title="Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）"></a>Larman的敏捷UP设计方法的具体步骤（Larman’s Design Process）</h3><img src="/2023/12/23/ruan-jian-she-ji-yu-ti-xi-jie-gou-b-fu-xi/image-20231223185249943.png" class="" title="Larman" alt="s Design Process">
+
+<h3 id="4-1视图"><a href="#4-1视图" class="headerlink" title="4+1视图"></a>4+1视图</h3><p>“4+1”视图模型即从5个不同的视角（逻辑视图，进程视图，物理视图，开发视图<br> 和场景视图）来描述软件体系结构。<br> 每个视图之关心系统的一个侧面，5个视图结合在一起才能反映系统的软件体系结构的全部内容。</p>
 <p>逻辑视图（Logical View）：<br> 过程视图：描述架构元素之间的并发和通信<br> 物理视图：描绘主要的过程和组件是如何映像到硬件上的<br> 开发视图：俘获软件组件内部的结构，如配置管理工具</p>
 <p>架构用例：俘获架构的需求；和不止一种视图相关</p>
 <p><strong>百度百科</strong><br> 逻辑视图（Logical View）设计的对象模型（使用[面向对象]的设计方法时）。<br> 过程视图（Process View）捕捉设计的并发和同步特征。<br> 物理视图（Physical View）描述了软件到硬件的映射，反映了分布式特性。<br> 开发视图（Development View）描述了在[开发环境]中软件的静态组织结构。</p>
