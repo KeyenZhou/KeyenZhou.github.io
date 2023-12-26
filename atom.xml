@@ -6,7 +6,7 @@
   <link href="https://keyenzhou.github.io/atom.xml" rel="self"/>
   
   <link href="https://keyenzhou.github.io/"/>
-  <updated>2023-12-23T10:53:05.140Z</updated>
+  <updated>2023-12-26T15:55:58.100Z</updated>
   <id>https://keyenzhou.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python爬虫</title>
+    <link href="https://keyenzhou.github.io/2023/12/26/spider-experience/"/>
+    <id>https://keyenzhou.github.io/2023/12/26/spider-experience/</id>
+    <published>2023-12-26T15:33:57.000Z</published>
+    <updated>2023-12-26T15:55:58.100Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;img src=&quot;/2023/12/26/spider-experience/spider.png&quot; class=&quot;&quot; title=&quot;spider&quot;&gt;
+
+&lt;h2 id=&quot;一些爬虫的经验&quot;&gt;&lt;a href=&quot;#一些爬虫的经验&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="https://keyenzhou.github.io/categories/python/"/>
+    
+    
+    <category term="spider" scheme="https://keyenzhou.github.io/tags/spider/"/>
+    
+    <category term="python" scheme="https://keyenzhou.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>软件设计与体系结构B复习</title>
@@ -70,7 +99,7 @@
     <link href="https://keyenzhou.github.io/2023/12/11/cpp-containers/"/>
     <id>https://keyenzhou.github.io/2023/12/11/cpp-containers/</id>
     <published>2023-12-11T14:31:39.000Z</published>
-    <updated>2023-12-23T06:05:12.590Z</updated>
+    <updated>2023-12-26T15:35:44.982Z</updated>
     
     
       
